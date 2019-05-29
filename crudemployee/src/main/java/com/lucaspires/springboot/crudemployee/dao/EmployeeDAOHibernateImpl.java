@@ -46,4 +46,11 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 		
 		currentSession.saveOrUpdate(theEmployee);
 	}
+
+	@Override
+	public void delete(Employee theEmployee) {
+		Session currentSession = entityManager.unwrap(Session.class);
+		
+		currentSession.delete(theEmployee);
+	}
 }

@@ -31,7 +31,14 @@ public class EmployeeSereviceImpl implements EmployeeService {
 	}
 
 	@Override
+	@Transactional
 	public void save(Employee theEmployee) {
 		employeeDAO.save(theEmployee);
+	}
+	
+	@Override
+	@Transactional
+	public void delete(Employee theEmployee) {
+		employeeDAO.delete(theEmployee);
 	}
 }
