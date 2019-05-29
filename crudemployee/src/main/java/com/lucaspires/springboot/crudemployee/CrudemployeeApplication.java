@@ -9,5 +9,4 @@ public class CrudemployeeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CrudemployeeApplication.class, args);
 	}
-
 }
