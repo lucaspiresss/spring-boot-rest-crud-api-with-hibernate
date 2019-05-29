@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,6 +35,16 @@ public class EmployeeRestController {
 		if (theEmployee == null) {
 			throw new RuntimeException("Employee id not found - " + employeeId);
 		}
+		
+		return theEmployee;
+	}
+	
+	@PostMapping("/employees")
+	public Employee save(@RequestBody Employee theEmployee) {
+		// if one pass an id in JSON, set it to 0 (forcing to save a new object, instead of update)
+		theEmployee.setId(0);
+		
+		employeeService.save(theEmployee);
 		
 		return theEmployee;
 	}

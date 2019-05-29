@@ -39,4 +39,11 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 		
 		return theEmployee;
 	}
+
+	@Override
+	public void save(Employee theEmployee) {
+		Session currentSession = entityManager.unwrap(Session.class);
+		
+		currentSession.saveOrUpdate(theEmployee);
+	}
 }
