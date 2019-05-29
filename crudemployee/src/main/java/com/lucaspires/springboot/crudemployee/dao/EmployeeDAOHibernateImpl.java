@@ -30,4 +30,13 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 		
 		return employees;
 	}
+
+	@Override
+	public Employee findById(int id) {
+		Session currentSession = entityManager.unwrap(Session.class);
+		
+		Employee theEmployee = currentSession.get(Employee.class, id);
+		
+		return theEmployee;
+	}
 }
